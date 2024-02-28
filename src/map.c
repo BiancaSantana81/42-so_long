@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:16:12 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/27 18:05:16 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/02/28 10:38:51 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,14 @@ void	collecting_components(int map_fd, t_game *game, t_map *map)
 			map->n_collectible++;
 		else if (map->c[0] == 'E')
 			map->n_exit++;
-		else if (map->c[0] != 'P' && map->c[0] != 'C'
-			&& map->c[0] != 'E' && map->c[0] != '0'
-			&& map->c[0] != '1' && map->c[0] != '\n')
-			map->invalid_character++;
+		else if (map->c[0] == 'F')
+			map->count_fire++;
 		else if (map->c[0] == '\n')
 			map->line_break++;
+		else if (map->c[0] != 'P' && map->c[0] != 'C'
+			&& map->c[0] != 'E' && map->c[0] != '0'
+			&& map->c[0] != '1' && map->c[0] != '\n' && map->c[0] != 'F')
+			map->invalid_character++;
 		map->bytes_read = read_file(map_fd, map, 1);
 	}
 	game->count_collectible = map->n_collectible;

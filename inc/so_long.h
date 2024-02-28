@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 14:14:15 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/27 18:02:54 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/02/28 11:10:03 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_map
 	int		n_collectible;
 	int		n_exit;
 	int		n_player;
+	int		count_fire;
 	int		invalid_character;
 	int		line_break;
 }	t_map;
@@ -77,6 +78,7 @@ typedef struct s_game
 	t_sprite	*exit;
 	t_sprite	*hudson_still;
 	t_sprite	*apple;
+	t_sprite	*fire;
 }	t_game;
 
 /***** map functions *****/
@@ -156,6 +158,10 @@ int			draw_hudson_still(t_game *game);
 int			draw_apples(t_game *game, int x, int y);
 int			draw_rock(t_game *game, int x, int y);
 int			draw_exit(t_game *game, int x, int y);
+int			draw_fire(t_game *game, int x, int y);
+
+/* Auxiliary function: draws images in the window. */
+void		aux_draw_images(t_game *game, int line, int column);
 
 /* Drawing the images on the game map. */
 int			draw_images(t_game *game);
@@ -177,6 +183,9 @@ void		updated_collectibles(t_game *game);
 
 /* After the player collects collectibles, enable the exit and end the game. */
 void		end_of_game(t_game *game);
+
+/* If you touch the fire, the player loses. */
+void		game_over(t_game *game);
 
 /* Clears all textures and images from the game and closes the window. */
 void		free_and_close(void *param);

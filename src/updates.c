@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:32:23 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/27 17:56:43 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/02/28 10:50:48 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,18 @@ void	end_of_game(t_game *game)
 	}
 }
 
+void	game_over(t_game *game)
+{
+	if (game->player_data->img->instances->x
+		== game->fire->img->instances->x
+		&& game->player_data->img->instances->y
+		== game->fire->img->instances->y)
+	{
+		free_and_close(game);
+		ft_printf("YOU LOSER!!\n");
+	}
+}
+
 void	free_and_close(void *param)
 {
 	t_game	*game;
@@ -61,6 +73,7 @@ void	free_and_close(void *param)
 	free_sprites(game, game->rock);
 	free_sprites(game, game->exit);
 	free_sprites(game, game->apple);
+	free_sprites(game, game->fire);
 	mlx_close_window(game->mlx);
 }
 
