@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:32:23 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/28 16:33:04 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/02/28 18:25:30 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	end_of_game(t_game *game)
 {
 	if (game->remove_collectible == 0)
 	{
-		game->exit->img->enabled = true;
+		game->exit->img->enabled = false;
+		game->love->img->enabled = true;
 		if (game->player_data->img->instances->x
 			== game->exit->img->instances->x
 			&& game->player_data->img->instances->y
@@ -81,6 +82,7 @@ void	free_and_close(void *param)
 	free_sprites(game, game->floor);
 	free_sprites(game, game->rock);
 	free_sprites(game, game->exit);
+	free_sprites(game, game->love);
 	free_sprites(game, game->apple);
 	free_sprites(game, game->fire);
 	free_sprites(game, game->high_fire);

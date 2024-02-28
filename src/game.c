@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 13:58:03 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/28 16:14:46 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/02/28 18:14:45 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ void	init_struct(t_game *game)
 	game->floor = NULL;
 	game->rock = NULL;
 	game->exit = NULL;
+	game->love = NULL;
 	game->hudson_still = NULL;
+	game->hudson_move = NULL;
 	game->apple = NULL;
 	game->high_fire = NULL;
 	game->fire = NULL;

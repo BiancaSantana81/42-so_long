@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 14:14:15 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/28 16:05:12 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/02/28 18:14:13 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,9 @@ typedef struct s_game
 	t_sprite	*floor;
 	t_sprite	*rock;
 	t_sprite	*exit;
+	t_sprite	*love;
 	t_sprite	*hudson_still;
+	t_sprite	*hudson_move;
 	t_sprite	*apple;
 	t_sprite	*fire;
 	t_sprite	*high_fire;
@@ -158,7 +160,7 @@ t_sprite	*load_images(t_game	*game, char *path);
 
 /* Set of functions that add images of game components to the window. */
 
-int			draw_hudson_still(t_game *game);
+int			draw_hudson(t_game *game);
 int			draw_apples(t_game *game, int x, int y);
 int			draw_rock(t_game *game, int x, int y);
 int			draw_exit(t_game *game, int x, int y);
@@ -213,6 +215,9 @@ void		animations(void *param);
 
 /**/
 void		animation_fire(t_game *game, int time);
+
+/**/
+// void		animation_hudson(t_game *game, int time);
 
 /* If you touch the fire, the player loses. */
 int			game_over(t_game *game);
