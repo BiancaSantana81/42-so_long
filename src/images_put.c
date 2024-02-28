@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 13:32:19 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/28 10:52:53 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:10:46 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ int	draw_fire(t_game *game, int x, int y)
 {
 	if (mlx_image_to_window(game->mlx,
 			game->fire->img, y * BLOCK, x * BLOCK) < 0)
+		ft_error(game);
+	if (mlx_image_to_window(game->mlx,
+			game->high_fire->img, y * BLOCK, x * BLOCK) < 0)
 		ft_error(game);
 	return (0);
 }

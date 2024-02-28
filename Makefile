@@ -6,7 +6,7 @@
 #    By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/25 17:35:15 by bsantana          #+#    #+#              #
-#    Updated: 2024/02/28 13:41:55 by bsantana         ###   ########.fr        #
+#    Updated: 2024/02/28 15:45:27 by bsantana         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ LIBFT := $(addprefix $(LIBFT_PATH), libft.a)
 SRC_DIR:= src
 
 # List of source files
-FILES_SRC := game.c map.c validations.c flood_fill.c images_draw.c images_put.c hooks.c updates.c  map_utils.c image_steps.c
+FILES_SRC := game.c map.c validations.c flood_fill.c images_draw.c images_put.c hooks.c updates.c  map_utils.c image_steps.c animations.c
 
 # List of object files derived from source files
 FILES_SRC_O := $(FILES_SRC:.c=.o)

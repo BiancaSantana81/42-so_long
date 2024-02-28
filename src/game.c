@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 13:58:03 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/28 13:26:40 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:14:46 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	init_struct(t_game *game)
 	game->exit = NULL;
 	game->hudson_still = NULL;
 	game->apple = NULL;
+	game->high_fire = NULL;
 	game->fire = NULL;
 }
 
@@ -74,6 +75,7 @@ int	init_game(t_game *game)
 	get_images(game);
 	draw_images(game);
 	mlx_key_hook(game->mlx, &requested_movements, game);
+	mlx_loop_hook(game->mlx, &animations, game);
 	mlx_close_hook(game->mlx, free_and_close, game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
