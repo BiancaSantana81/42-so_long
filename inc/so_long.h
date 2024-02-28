@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 14:14:15 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/28 11:10:03 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/02/28 11:46:14 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ typedef struct s_map
 	int		n_collectible;
 	int		n_exit;
 	int		n_player;
-	int		count_fire;
 	int		invalid_character;
 	int		line_break;
 }	t_map;
@@ -66,6 +65,7 @@ typedef struct s_game
 	int			flag;
 	int			line;
 	int			column;
+	int			count_fire;
 	int			count_collectible;
 	int			remove_collectible;
 	int			player_x;
@@ -185,7 +185,7 @@ void		updated_collectibles(t_game *game);
 void		end_of_game(t_game *game);
 
 /* If you touch the fire, the player loses. */
-void		game_over(t_game *game);
+int			game_over(t_game *game);
 
 /* Clears all textures and images from the game and closes the window. */
 void		free_and_close(void *param);

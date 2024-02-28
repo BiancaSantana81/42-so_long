@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 13:58:03 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/28 10:44:10 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/02/28 11:42:42 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	init_struct_map(t_map *map)
 	map->n_collectible = 0;
 	map->n_exit = 0;
 	map->n_player = 0;
-	map->count_fire = 0;
 	map->invalid_character = 0;
 	map->line_break = 1;
 }
@@ -35,6 +34,7 @@ void	init_struct(t_game *game)
 	game->flag = 0;
 	game->line = 0;
 	game->column = 0;
+	game->count_fire = 0;
 	game->count_collectible = 0;
 	game->remove_collectible = 0;
 	game->player_x = 0;

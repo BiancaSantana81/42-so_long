@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 13:37:16 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/28 10:57:36 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/02/28 11:59:10 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void	requested_movements(mlx_key_data_t keydata, void *param)
 	else if (key_pressed(keydata, MLX_KEY_D, MLX_KEY_RIGHT))
 		player_movement_x(game, 'x', '+');
 	updated_collectibles(game);
-	game_over(game);
+	if (game_over(game))
+		return ;
 	end_of_game(game);
 }
 

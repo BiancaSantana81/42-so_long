@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:32:23 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/28 10:50:48 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/02/28 12:02:15 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,25 @@ void	end_of_game(t_game *game)
 	}
 }
 
-void	game_over(t_game *game)
+int	game_over(t_game *game)
 {
-	if (game->player_data->img->instances->x
-		== game->fire->img->instances->x
-		&& game->player_data->img->instances->y
-		== game->fire->img->instances->y)
+	int	i;
+
+	i = 0;
+	while (i < game->count_fire)
 	{
-		free_and_close(game);
-		ft_printf("YOU LOSER!!\n");
+		if (game->player_data->img->instances->x
+			== game->fire->img->instances[i].x
+			&& game->player_data->img->instances->y
+			== game->fire->img->instances[i].y)
+		{
+			free_and_close(game);
+			ft_printf("YOU LOSER!!\n");
+			return (1);
+		}
+	i++;
 	}
+	return (0);
 }
 
 void	free_and_close(void *param)
