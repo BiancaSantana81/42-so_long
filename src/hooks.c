@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 13:37:16 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/28 11:59:10 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:20:01 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	player_movement_x(t_game *game, char pos, char op)
 		game->player_y--;
 		game->n_moves++;
 		ft_printf("moves: %d\n", game->n_moves);
+		counter(game);
 	}
 	else if (pos == 'x' && op == '+'
 		&& game->map.map[game->player_x][game->player_y + 1] != '1')
@@ -62,6 +63,7 @@ void	player_movement_x(t_game *game, char pos, char op)
 		game->player_y++;
 		game->n_moves++;
 		ft_printf("moves: %d\n", game->n_moves);
+		counter(game);
 	}
 	game->player_data->img->instances[0].x = new_x;
 }
@@ -78,6 +80,7 @@ void	player_movement_y(t_game *game, char pos, char op)
 		game->player_x--;
 		game->n_moves++;
 		ft_printf("moves: %d\n", game->n_moves);
+		counter(game);
 	}
 	else if (pos == 'y' && op == '+'
 		&& game->map.map[game->player_x +1][game->player_y] != '1')
@@ -86,6 +89,7 @@ void	player_movement_y(t_game *game, char pos, char op)
 		game->player_x++;
 		game->n_moves++;
 		ft_printf("moves: %d\n", game->n_moves);
+		counter(game);
 	}
 	game->player_data->img->instances[0].y = new_y;
 }

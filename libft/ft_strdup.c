@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 14:58:21 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/07 15:29:23 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/02/28 14:56:15 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strdup(char *s)
 	size_t		i;
 
 	i = 0;
-	dest = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	dest = ft_calloc(sizeof(char), (ft_strlen(s) + 1));
 	if (dest == NULL)
 	{
 		return (NULL);

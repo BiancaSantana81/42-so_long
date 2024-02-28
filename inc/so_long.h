@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 14:14:15 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/28 11:46:14 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:21:59 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,9 @@ typedef struct s_game
 	int			player_y;
 	int			n_moves;
 	t_map		map;
+	mlx_image_t	*steps;
+	mlx_image_t	*count_image;
+	t_sprite	*counter;
 	t_sprite	*player_data;
 	t_sprite	*floor;
 	t_sprite	*rock;
@@ -166,6 +169,12 @@ void		aux_draw_images(t_game *game, int line, int column);
 /* Drawing the images on the game map. */
 int			draw_images(t_game *game);
 
+/* Adds a background image to the counter with the word "Moves: ". */
+int			build_counter(t_game *game);
+
+/* Adds the step counter to the window. */
+void		counter(t_game *game);
+
 /* Data on selected keys. */
 int32_t		key_pressed(mlx_key_data_t keydata, keys_t key1, keys_t key2);
 /* Captures the movement requested by the player. */
@@ -196,5 +205,6 @@ void		free_sprites(t_game *game, t_sprite *sprites);
 /* Auxiliary function: clears and closes the
 game in the event of an error when loading a texture/image. */
 void		ft_error(t_game *game);
+
 
 #endif

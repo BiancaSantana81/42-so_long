@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:32:23 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/28 12:02:15 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/02/28 14:23:54 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	free_and_close(void *param)
 	free_sprites(game, game->exit);
 	free_sprites(game, game->apple);
 	free_sprites(game, game->fire);
+	free_sprites(game, game->counter);
 	mlx_close_window(game->mlx);
 }
 

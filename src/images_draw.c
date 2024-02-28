@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 11:38:47 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/28 10:44:49 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:18:14 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	get_images(t_game *game)
 	game->apple = load_images(game, "assets/sprites/apple.png");
 	game->fire = load_images(game, "assets/sprites/fire.png");
 	game->hudson_still = load_images(game, "assets/sprites/hudson_still.png");
+	game->counter = load_images(game, "assets/sprites/counter.png");
 	game->exit->img->enabled = false;
 }
 
@@ -54,6 +55,7 @@ int	draw_images(t_game *game)
 		}
 		line++;
 	}
+	build_counter(game);
 	draw_hudson_still(game);
 	game->player_data = game->hudson_still;
 	return (0);
