@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 14:14:15 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/29 11:22:57 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/02/29 14:26:50 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,7 +218,7 @@ void		animations(void *param);
 void		animation_fire(t_game *game, int time);
 
 /**/
-// void		animation_hudson(t_game *game, int time);
+void		animation_hudson(t_game *game, int time);
 
 /* If you touch the fire, the player loses. */
 int			game_over(t_game *game);
