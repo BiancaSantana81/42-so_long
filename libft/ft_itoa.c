@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 10:22:41 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/28 14:58:53 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/02/29 10:17:11 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ char	*ft_itoa(int n)
 
 	count_s = ft_count(n);
 	num = (long)n;
-	if (n == 0)
-		return (ft_strdup("0"));
 	s = (char *)ft_calloc((count_s + 1), 1);
 	if (s == NULL)
 		return (NULL);
