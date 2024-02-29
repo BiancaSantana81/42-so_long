@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.c                                            :+:      :+:    :+:   */
+/*   hooks_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 13:37:16 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/29 11:25:12 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:26:01 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../inc/so_long_bonus.h"
 
 int32_t	key_pressed(mlx_key_data_t keydata, keys_t key1, keys_t key2)
 {
@@ -37,6 +37,8 @@ void	requested_movements(mlx_key_data_t keydata, void *param)
 	else if (key_pressed(keydata, MLX_KEY_D, MLX_KEY_RIGHT))
 		player_movement_x(game, 'x', '+');
 	updated_collectibles(game);
+	if (game_over(game))
+		return ;
 	end_of_game(game);
 }
 
@@ -52,6 +54,7 @@ void	player_movement_x(t_game *game, char pos, char op)
 		game->player_y--;
 		game->n_moves++;
 		ft_printf("moves: %d\n", game->n_moves);
+		counter(game);
 	}
 	else if (pos == 'x' && op == '+'
 		&& game->map.map[game->player_x][game->player_y + 1] != '1')
@@ -60,6 +63,7 @@ void	player_movement_x(t_game *game, char pos, char op)
 		game->player_y++;
 		game->n_moves++;
 		ft_printf("moves: %d\n", game->n_moves);
+		counter(game);
 	}
 	game->player_data->img->instances[0].x = new_x;
 }
@@ -76,6 +80,7 @@ void	player_movement_y(t_game *game, char pos, char op)
 		game->player_x--;
 		game->n_moves++;
 		ft_printf("moves: %d\n", game->n_moves);
+		counter(game);
 	}
 	else if (pos == 'y' && op == '+'
 		&& game->map.map[game->player_x +1][game->player_y] != '1')
@@ -84,6 +89,7 @@ void	player_movement_y(t_game *game, char pos, char op)
 		game->player_x++;
 		game->n_moves++;
 		ft_printf("moves: %d\n", game->n_moves);
+		counter(game);
 	}
 	game->player_data->img->instances[0].y = new_y;
 }

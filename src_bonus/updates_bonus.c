@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   updates.c                                          :+:      :+:    :+:   */
+/*   updates_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:32:23 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/29 11:24:49 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/02/29 14:08:14 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../inc/so_long_bonus.h"
 
 void	updated_collectibles(t_game *game)
 {
@@ -38,7 +38,8 @@ void	end_of_game(t_game *game)
 {
 	if (game->remove_collectible == 0)
 	{
-		game->exit->img->enabled = true;
+		game->exit->img->enabled = false;
+		game->love->img->enabled = true;
 		if (game->player_data->img->instances->x
 			== game->exit->img->instances->x
 			&& game->player_data->img->instances->y
@@ -48,6 +49,27 @@ void	end_of_game(t_game *game)
 			ft_printf("YOU WIN!!\n");
 		}
 	}
+}
+
+int	game_over(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < game->count_fire)
+	{
+		if (game->player_data->img->instances->x
+			== game->fire->img->instances[i].x
+			&& game->player_data->img->instances->y
+			== game->fire->img->instances[i].y)
+		{
+			free_and_close(game);
+			ft_printf("YOU LOSER!!\n");
+			return (1);
+		}
+	i++;
+	}
+	return (0);
 }
 
 void	free_and_close(void *param)
@@ -60,7 +82,11 @@ void	free_and_close(void *param)
 	free_sprites(game, game->floor);
 	free_sprites(game, game->rock);
 	free_sprites(game, game->exit);
+	free_sprites(game, game->love);
 	free_sprites(game, game->apple);
+	free_sprites(game, game->fire);
+	free_sprites(game, game->high_fire);
+	free_sprites(game, game->counter);
 	mlx_close_window(game->mlx);
 }
 

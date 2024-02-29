@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   images_draw.c                                      :+:      :+:    :+:   */
+/*   images_draw_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 11:38:47 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/29 11:25:15 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/02/29 14:08:01 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../inc/so_long_bonus.h"
 
 t_sprite	*load_images(t_game	*game, char *path)
 {
@@ -30,11 +30,18 @@ t_sprite	*load_images(t_game	*game, char *path)
 void	get_images(t_game *game)
 {
 	game->floor = load_images(game, "assets/sprites/floor.png");
-	game->hudson_still = load_images(game, "assets/sprites/hudson_still.png");
 	game->rock = load_images(game, "assets/sprites/rock.png");
+	game->exit = load_images(game, "assets/sprites/exit.png");
+	game->love = load_images(game, "assets/sprites/love.png");
+	game->love->img->enabled = false;
 	game->apple = load_images(game, "assets/sprites/apple.png");
-	game->exit = load_images(game, "assets/sprites/love.png");
-	game->exit->img->enabled = false;
+	game->fire = load_images(game, "assets/sprites/fire.png");
+	game->high_fire = load_images(game, "assets/sprites/high_fire.png");
+	game->high_fire->img->enabled = false;
+	game->hudson_still = load_images(game, "assets/sprites/hudson_still.png");
+	game->hudson_move = load_images(game, "assets/sprites/hudson_move.png");
+	game->hudson_move->img->enabled = false;
+	game->counter = load_images(game, "assets/sprites/counter.png");
 }
 
 int	draw_images(t_game *game)
@@ -48,20 +55,28 @@ int	draw_images(t_game *game)
 		column = 0;
 		while (game->map.map[line][column])
 		{
-			if (mlx_image_to_window(game->mlx,
-					game->floor->img, column * BLOCK, line * BLOCK) < 0)
-				ft_error(game);
-			if (game->map.map[line][column] == 'C')
-				draw_apples(game, line, column);
-			if (game->map.map[line][column] == 'E')
-				draw_exit(game, line, column);
-			if (game->map.map[line][column] == '1')
-				draw_rock(game, line, column);
+			aux_draw_images(game, line, column);
 			column++;
 		}
 		line++;
 	}
-	draw_hudson_still(game);
+	build_counter(game);
+	draw_hudson(game);
 	game->player_data = game->hudson_still;
 	return (0);
+}
+
+void	aux_draw_images(t_game *game, int line, int column)
+{
+	if (mlx_image_to_window(game->mlx,
+			game->floor->img, column * BLOCK, line * BLOCK) < 0)
+		ft_error(game);
+	if (game->map.map[line][column] == 'C')
+		draw_apples(game, line, column);
+	if (game->map.map[line][column] == 'E')
+		draw_exit(game, line, column);
+	if (game->map.map[line][column] == '1')
+		draw_rock(game, line, column);
+	if (game->map.map[line][column] == 'F')
+		draw_fire(game, line, column);
 }

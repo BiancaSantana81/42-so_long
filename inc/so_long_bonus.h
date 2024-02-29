@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 14:14:15 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/29 11:21:47 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:22:57 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # define BUFFER_SIZE 10
 # define SIZE 16
@@ -64,18 +64,28 @@ typedef struct s_game
 	int			flag;
 	int			line;
 	int			column;
+	int			count_fire;
 	int			count_collectible;
 	int			remove_collectible;
 	int			player_x;
 	int			player_y;
+	// int			player_x_m;
+	// int			player_y_m;
 	int			n_moves;
 	t_map		map;
+	mlx_image_t	*steps;
+	mlx_image_t	*count_image;
+	t_sprite	*counter;
 	t_sprite	*player_data;
 	t_sprite	*floor;
 	t_sprite	*rock;
 	t_sprite	*exit;
+	t_sprite	*love;
 	t_sprite	*hudson_still;
+	t_sprite	*hudson_move;
 	t_sprite	*apple;
+	t_sprite	*fire;
+	t_sprite	*high_fire;
 }	t_game;
 
 /***** map functions *****/
@@ -149,15 +159,20 @@ void		get_images(t_game *game);
 
 t_sprite	*load_images(t_game	*game, char *path);
 
-/** Set of functions that add images of game components to the window. **/
+/* Set of functions that add images of game components to the window. */
 
-int			draw_hudson_still(t_game *game);
+int			draw_hudson(t_game *game);
 int			draw_apples(t_game *game, int x, int y);
 int			draw_rock(t_game *game, int x, int y);
 int			draw_exit(t_game *game, int x, int y);
+int			draw_fire(t_game *game, int x, int y);
+
+/* Auxiliary function: draws images in the window. */
+void		aux_draw_images(t_game *game, int line, int column);
 
 /* Drawing the images on the game map. */
 int			draw_images(t_game *game);
+
 
 /* Data on selected keys. */
 int32_t		key_pressed(mlx_key_data_t keydata, keys_t key1, keys_t key2);
@@ -177,6 +192,7 @@ void		updated_collectibles(t_game *game);
 /* After the player collects collectibles, enable the exit and end the game. */
 void		end_of_game(t_game *game);
 
+
 /* Clears all textures and images from the game and closes the window. */
 void		free_and_close(void *param);
 
@@ -186,6 +202,26 @@ void		free_sprites(t_game *game, t_sprite *sprites);
 /* Auxiliary function: clears and closes the
 game in the event of an error when loading a texture/image. */
 void		ft_error(t_game *game);
+
+/***** bonus part functions *****/
+
+/* Adds a background image to the counter with the word "Moves: ". */
+int			build_counter(t_game *game);
+
+/* Adds the step counter to the window. */
+void		counter(t_game *game);
+
+/**/
+void		animations(void *param);
+
+/**/
+void		animation_fire(t_game *game, int time);
+
+/**/
+// void		animation_hudson(t_game *game, int time);
+
+/* If you touch the fire, the player loses. */
+int			game_over(t_game *game);
 
 // ERROR_MESSAGES
 
