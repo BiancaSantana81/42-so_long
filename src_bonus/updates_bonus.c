@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:32:23 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/29 19:13:35 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/03/01 11:07:27 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ void	free_and_close(void *param)
 	free_map(game->map.map);
 	free_sprites(game, game->player_data);
 	free_sprites(game, game->player_data_l);
-	free_sprites(game, game->player_data_move);
-	free_sprites(game, game->player_data_move_l);
 	free_sprites(game, game->floor);
 	free_sprites(game, game->rock);
 	free_sprites(game, game->exit);

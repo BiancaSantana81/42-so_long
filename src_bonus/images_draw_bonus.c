@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 11:38:47 by bsantana          #+#    #+#             */
-/*   Updated: 2024/03/01 09:46:40 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/03/01 11:08:30 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,6 @@ void	get_images(t_game *game)
 	game->hudson_still_l
 		= load_images(game, "assets/sprites/hudson_still_l.png");
 	game->hudson_still_l->img->enabled = false;
-	game->hudson_move = load_images(game, "assets/sprites/hudson_move.png");
-	game->hudson_move->img->enabled = false;
-	game->hudson_move_l = load_images(game, "assets/sprites/hudson_move_l.png");
-	game->hudson_move_l->img->enabled = false;
 	game->counter = load_images(game, "assets/sprites/counter.png");
 }
 
@@ -69,8 +65,6 @@ int	draw_images(t_game *game)
 	draw_hudson(game);
 	game->player_data = game->hudson_still;
 	game->player_data_l = game->hudson_still_l;
-	game->player_data_move = game->hudson_move;
-	game->player_data_move_l = game->hudson_move_l;
 	return (0);
 }
 

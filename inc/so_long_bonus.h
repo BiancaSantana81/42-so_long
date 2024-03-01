@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 14:14:15 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/29 19:08:37 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/03/01 11:21:49 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ typedef struct s_game
 	int			player_x;
 	int			player_y;
 	int			n_moves;
-	char		side;
 	t_map		map;
 	mlx_image_t	*steps;
 	mlx_image_t	*count_image;
@@ -85,8 +84,6 @@ typedef struct s_game
 	t_sprite	*love;
 	t_sprite	*hudson_still;
 	t_sprite	*hudson_still_l;
-	t_sprite	*hudson_move;
-	t_sprite	*hudson_move_l;
 	t_sprite	*apple;
 	t_sprite	*fire;
 	t_sprite	*high_fire;
@@ -177,14 +174,10 @@ void		aux_draw_images(t_game *game, int line, int column);
 /* Drawing the images on the game map. */
 int			draw_images(t_game *game);
 
-
 /* Data on selected keys. */
 int32_t		key_pressed(mlx_key_data_t keydata, keys_t key1, keys_t key2);
 /* Captures the movement requested by the player. */
 void		requested_movements(mlx_key_data_t keydata, void *param);
-
-/* escrever comentário */
-int			player_movemnts(t_game *game, char pos, char op);
 
 /* Player movement on the x axis. */
 int			player_movement_x(t_game *game, char op);
@@ -217,29 +210,21 @@ int			build_counter(t_game *game);
 /* Adds the step counter to the window. */
 void		counter(t_game *game);
 
-/**/
+/* Moves the player along the x and y axis. */
+int			player_movemnts(t_game *game, char pos, char op);
+
+/* Performs the game's animations. */
 void		animations(void *param);
 
-/**/
-void		animation_hudson(t_game *game, int time);
-
-/**/
+/* Moves the player according to its direction. */
 void		animation_fire(t_game *game, int time);
 
-/**/
+/* Moves the player. */
 void		move_player(t_game *game, char mov);
 
-/**/
+/* Checks the direction of the character
+to enable or disable the correct images. */
 void		side(t_game *game, char side);
-
-/**/
-void		hudson_right(t_game *game);
-
-/**/
-void		hudson_left(t_game *game);
-
-/**/
-//void		animation_hudson(t_game *game, int time);
 
 /* If you touch the fire, the player loses. */
 int			game_over(t_game *game);

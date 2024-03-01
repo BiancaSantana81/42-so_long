@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 13:32:19 by bsantana          #+#    #+#             */
-/*   Updated: 2024/03/01 10:11:13 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/03/01 11:08:17 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,6 @@ int	draw_hudson(t_game *game)
 		ft_error(game);
 	if (mlx_image_to_window(game->mlx,
 			game->hudson_still_l->img,
-			game->player_y * BLOCK, game->player_x * BLOCK) < 0)
-		ft_error(game);
-	if (mlx_image_to_window(game->mlx,
-			game->hudson_move->img,
-			game->player_y * BLOCK, game->player_x * BLOCK) < 0)
-		ft_error(game);
-	if (mlx_image_to_window(game->mlx,
-			game->hudson_move_l->img,
 			game->player_y * BLOCK, game->player_x * BLOCK) < 0)
 		ft_error(game);
 	game->hudson_still->x = game->player_x;
