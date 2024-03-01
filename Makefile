@@ -6,7 +6,7 @@
 #    By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/25 17:35:15 by bsantana          #+#    #+#              #
-#    Updated: 2024/02/29 14:05:34 by bsantana         ###   ########.fr        #
+#    Updated: 2024/02/29 15:48:06 by bsantana         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ FILES_SRC := flood_fill.c game.c hooks.c images_draw.c images_put.c map_utils.c 
 
 FILES_SRC_BONUS := animations_bonus.c flood_fill_bonus.c game_bonus.c hooks_bonus.c \
 				image_steps_bonus.c images_draw_bonus.c images_put_bonus.c map_bonus.c \
-				map_utils_bonus.c updates_bonus.c validations_bonus.c
+				map_utils_bonus.c updates_bonus.c validations_bonus.c moves_bonus.c moves_utils_bonus.c
 					
 # List of object files derived from source files
 FILES_SRC_O := $(FILES_SRC:.c=.o)

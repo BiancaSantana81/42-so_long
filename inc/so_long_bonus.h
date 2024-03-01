@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 14:14:15 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/29 14:26:50 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/03/01 11:36:17 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,20 +69,19 @@ typedef struct s_game
 	int			remove_collectible;
 	int			player_x;
 	int			player_y;
-	// int			player_x_m;
-	// int			player_y_m;
 	int			n_moves;
 	t_map		map;
 	mlx_image_t	*steps;
 	mlx_image_t	*count_image;
 	t_sprite	*counter;
 	t_sprite	*player_data;
+	t_sprite	*player_data_l;
 	t_sprite	*floor;
 	t_sprite	*rock;
 	t_sprite	*exit;
 	t_sprite	*love;
 	t_sprite	*hudson_still;
-	t_sprite	*hudson_move;
+	t_sprite	*hudson_still_l;
 	t_sprite	*apple;
 	t_sprite	*fire;
 	t_sprite	*high_fire;
@@ -173,17 +172,16 @@ void		aux_draw_images(t_game *game, int line, int column);
 /* Drawing the images on the game map. */
 int			draw_images(t_game *game);
 
-
 /* Data on selected keys. */
 int32_t		key_pressed(mlx_key_data_t keydata, keys_t key1, keys_t key2);
 /* Captures the movement requested by the player. */
 void		requested_movements(mlx_key_data_t keydata, void *param);
 
 /* Player movement on the x axis. */
-void		player_movement_x(t_game *game, char pos, char op);
+int			player_movement_x(t_game *game, char op);
 
 /* Player movement on the y axis. */
-void		player_movement_y(t_game *game, char pos, char op);
+int			player_movement_y(t_game *game, char op);
 
 /* After the player passes the collectible,
 disable its image and update the count. */
@@ -191,7 +189,6 @@ void		updated_collectibles(t_game *game);
 
 /* After the player collects collectibles, enable the exit and end the game. */
 void		end_of_game(t_game *game);
-
 
 /* Clears all textures and images from the game and closes the window. */
 void		free_and_close(void *param);
@@ -211,14 +208,21 @@ int			build_counter(t_game *game);
 /* Adds the step counter to the window. */
 void		counter(t_game *game);
 
-/**/
+/* Moves the player along the x and y axis. */
+int			player_movemnts(t_game *game, char pos, char op);
+
+/* Performs the game's animations. */
 void		animations(void *param);
 
-/**/
+/* Moves the player according to its direction. */
 void		animation_fire(t_game *game, int time);
 
-/**/
-void		animation_hudson(t_game *game, int time);
+/* Moves the player. */
+void		move_player(t_game *game, char mov);
+
+/* Checks the direction of the character
+to enable or disable the correct images. */
+void		side(t_game *game, char side);
 
 /* If you touch the fire, the player loses. */
 int			game_over(t_game *game);

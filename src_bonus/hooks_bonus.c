@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 13:37:16 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/29 11:26:01 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/02/29 18:03:02 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,68 +28,20 @@ void	requested_movements(mlx_key_data_t keydata, void *param)
 		free_and_close(game);
 		return ;
 	}
-	else if (key_pressed(keydata, MLX_KEY_W, MLX_KEY_UP))
-		player_movement_y(game, 'y', '-' );
-	else if (key_pressed(keydata, MLX_KEY_S, MLX_KEY_DOWN))
-		player_movement_y(game, 'y', '+');
-	else if (key_pressed(keydata, MLX_KEY_A, MLX_KEY_LEFT))
-		player_movement_x(game, 'x', '-');
-	else if (key_pressed(keydata, MLX_KEY_D, MLX_KEY_RIGHT))
-		player_movement_x(game, 'x', '+');
+	if (key_pressed(keydata, MLX_KEY_W, MLX_KEY_UP))
+		if (player_movemnts(game, 'y', '-' ) == 0)
+			move_player(game, 'w');
+	if (key_pressed(keydata, MLX_KEY_S, MLX_KEY_DOWN))
+		if (player_movemnts(game, 'y', '+') == 0)
+			move_player(game, 's');
+	if (key_pressed(keydata, MLX_KEY_A, MLX_KEY_LEFT))
+		if (player_movemnts(game, 'x', '-') == 0)
+			move_player(game, 'a');
+	if (key_pressed(keydata, MLX_KEY_D, MLX_KEY_RIGHT))
+		if (player_movemnts(game, 'x', '+') == 0)
+			move_player(game, 'd');
 	updated_collectibles(game);
 	if (game_over(game))
 		return ;
 	end_of_game(game);
-}
-
-void	player_movement_x(t_game *game, char pos, char op)
-{
-	int	new_x;
-
-	new_x = game->player_data->img->instances[0].x;
-	if (pos == 'x' && op == '-'
-		&& game->map.map[game->player_x][game->player_y - 1] != '1')
-	{
-		new_x -= BLOCK;
-		game->player_y--;
-		game->n_moves++;
-		ft_printf("moves: %d\n", game->n_moves);
-		counter(game);
-	}
-	else if (pos == 'x' && op == '+'
-		&& game->map.map[game->player_x][game->player_y + 1] != '1')
-	{
-		new_x += BLOCK;
-		game->player_y++;
-		game->n_moves++;
-		ft_printf("moves: %d\n", game->n_moves);
-		counter(game);
-	}
-	game->player_data->img->instances[0].x = new_x;
-}
-
-void	player_movement_y(t_game *game, char pos, char op)
-{
-	int	new_y;
-
-	new_y = game->player_data->img->instances[0].y;
-	if (pos == 'y' && op == '-'
-		&& game->map.map[game->player_x - 1][game->player_y] != '1')
-	{
-		new_y -= BLOCK;
-		game->player_x--;
-		game->n_moves++;
-		ft_printf("moves: %d\n", game->n_moves);
-		counter(game);
-	}
-	else if (pos == 'y' && op == '+'
-		&& game->map.map[game->player_x +1][game->player_y] != '1')
-	{
-		new_y += BLOCK;
-		game->player_x++;
-		game->n_moves++;
-		ft_printf("moves: %d\n", game->n_moves);
-		counter(game);
-	}
-	game->player_data->img->instances[0].y = new_y;
 }

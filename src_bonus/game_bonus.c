@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 13:58:03 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/29 11:25:57 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/03/01 11:37:17 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,15 @@ void	init_struct(t_game *game)
 	game->remove_collectible = 0;
 	game->player_x = 0;
 	game->player_y = 0;
-	// game->player_x_m = 0;
-	// game->player_y_m = 0;
 	game->n_moves = 0;
 	game->player_data = NULL;
+	game->player_data_l = NULL;
 	game->floor = NULL;
 	game->rock = NULL;
 	game->exit = NULL;
 	game->love = NULL;
 	game->hudson_still = NULL;
-	game->hudson_move = NULL;
+	game->hudson_still_l = NULL;
 	game->apple = NULL;
 	game->high_fire = NULL;
 	game->fire = NULL;
