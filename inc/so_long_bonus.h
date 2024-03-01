@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 14:14:15 by bsantana          #+#    #+#             */
-/*   Updated: 2024/03/01 11:21:49 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/03/01 11:36:17 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,6 @@ typedef struct s_game
 	t_sprite	*counter;
 	t_sprite	*player_data;
 	t_sprite	*player_data_l;
-	t_sprite	*player_data_move;
-	t_sprite	*player_data_move_l;
 	t_sprite	*floor;
 	t_sprite	*rock;
 	t_sprite	*exit;
