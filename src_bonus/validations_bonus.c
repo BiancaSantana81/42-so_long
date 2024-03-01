@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 13:26:15 by bsantana          #+#    #+#             */
-/*   Updated: 2024/02/29 14:08:17 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/03/01 13:56:53 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ int	check_params(int argc, char **argv)
 	if (argc != 2)
 	{
 		ft_putstr_fd(ERROR_ARGS, 2);
-		return (0);
+		return (EXIT_FAILURE);
 	}
 	if (ft_strrncmp(argv[1], ".ber", 4))
 	{
 		ft_putstr_fd(ERROR_EXTENSION, 2);
-		return (0);
+		return (EXIT_FAILURE);
 	}
-	return (1);
+	return (EXIT_SUCCESS);
 }
 
 int	is_rectangular(t_game *game, t_map *map)
@@ -88,8 +88,8 @@ int	validations(int argc, char **argv, t_game *game)
 {
 	t_map	map;
 
-	if (!check_params(argc, argv))
-		return (0);
+	if (check_params(argc, argv))
+		return (EXIT_FAILURE);
 	map.fd = open_file(argv[1]);
 	collecting_components(map.fd, game, &map);
 	if (check_components(&map))

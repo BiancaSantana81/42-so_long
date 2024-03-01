@@ -6,7 +6,7 @@
 /*   By: bsantana <bsantana@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:47:19 by bsantana          #+#    #+#             */
-/*   Updated: 2024/03/01 11:07:52 by bsantana         ###   ########.fr       */
+/*   Updated: 2024/03/01 11:59:09 by bsantana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	side(t_game *game, char side)
 
 void	move_player(t_game *game, char mov)
 {
-
 	if (mov == 's')
 	{
 		game->player_data->img->instances[0].y += BLOCK;
